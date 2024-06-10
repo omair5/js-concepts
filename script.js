@@ -147,3 +147,104 @@
 
 
 
+
+
+
+// --------------PROMISES
+
+
+// promises are used to handle async operations in javascript
+
+// for example
+// i have a cart
+
+// const cart=['shirt','pant','kurta']
+
+// createOrder(cart) it will return an orderID
+// then we will call
+
+// proceedToPay(orderID)
+
+// in early days we used to handle this async task with callbacks
+
+// createOrder(cart,callbackFunction)
+
+// here we can not blindly trust createOrder api or function
+// becasue may be this api is written by someone else
+// and it may call our callback twice
+
+
+
+
+
+
+// -----------ASYNC AWAIT
+
+
+// how is async function different from normal function?
+// async function will always returns a promise
+
+// async await combo is used to handle promises
+
+// before async await we use to handle promise with .then and .catch
+
+// await keyword can only be use inside of a async function
+
+// MAIN DIFFERENCE IN HANDLING PROMISE BY .then and async await is listed below
+
+// const myPromise1 = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve('THE PROMISE 1 IS RESOLVED')
+//     }, 10000)
+// })
+
+// const myPromise2 = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve('THE PROMISE 2 IS RESOLVED')
+//     }, 5000)
+// })
+
+// PROMISE HANDLING USING THEN
+// myPromise.then((res) => {
+//     console.log(res)
+// }).catch()
+// console.log('i am a log')
+
+
+// PROMISE HANDLING USING ASYNC AWAIT
+// it will work synchronously (not actually) it is basically not in the call stack
+// if it was the case then our program will freeze
+
+// basically it looks like that it is working synchrounously but it is not
+
+// the function handling the promise to be resolved will get suspended once
+// it encounter await keyword and once the promise is resolved it will resume execution
+// from where it has left
+
+// const getData = async () => {
+//     const data = await myPromise
+//     console.log(data)
+//     console.log('i am a log')
+// }
+// getData()
+
+
+// const getData = async () => {
+//     console.log('HELLO OMAIR HERE')
+//     const p1 = await myPromise1
+//     console.log('JUST LIKE THAT')
+//     console.log(p1)
+
+
+//     const p2 = await myPromise2
+//     console.log('JUST LIKE THAT')
+//     console.log(p2)
+// }
+
+// getData()
+
+
+// Error handling is done using try/catch in async await
+
+// behind the scene async await is also using .then and .catch
+// so basically it is just an synthethical sugar for handling promises
