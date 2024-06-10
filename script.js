@@ -455,3 +455,47 @@
 
 // const greetPerson = greet.bind(person);
 // greetPerson(); // Output: Hello, John!
+
+
+
+
+//---------------------- CONSTRUCTOR FUNCTION
+
+
+// The regular {... } syntax allows us to create one object.But often we need to create many similar objects, like multiple users or menu items and so on.
+
+// That can be done using constructor functions.
+
+// Constructor functions technically are regular functions.There are two conventions though:
+
+// They are named with capital letter first.
+// They should be executed only with "new" operator.
+
+
+// function User(name) {
+//     this.name = name;
+//     this.isAdmin = false;
+// }
+
+// let user = new User("Jack");
+
+// alert(user.name); // Jack
+// alert(user.isAdmin); // false
+
+
+// When a function is executed with new, it does the following steps:
+
+// A new empty object is created and assigned to this.
+// The function body executes.Usually it modifies this, adds new properties to it.
+// The value of this is returned.
+// In other words, new User(...) does something like:
+
+// function User(name) {
+// this = {};  (implicitly)
+
+// add properties to this
+//     this.name = name;
+//     this.isAdmin = false;
+
+// return this;  (implicitly)
+// }
