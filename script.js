@@ -248,3 +248,210 @@
 
 // behind the scene async await is also using .then and .catch
 // so basically it is just an synthethical sugar for handling promises
+
+
+
+
+// ------------THIS KEYWORD
+
+
+// The this keyword refers to the context where a piece of code, such as a function's body, is supposed to run.
+
+// console.log(this)
+
+// "use strict";
+
+// function test() {
+//     console.log(this)
+// }
+
+// test()
+
+// const myObj = {
+//     name: 'omair',
+//     printName: () => {
+//         console.log(this)
+//     }
+// }
+
+// myObj.printName()
+
+// POINT 1
+// THIS keyword in global space will always points to global object
+// (that can be different wrt to environmnet u r using)
+// in web it is window in node it is global
+
+// POINT 2
+// THIS value behaves differently in strict and non strict mode
+
+// POINT 3
+// in strict mode the value of THIS keyword is undefined
+// but due to (THIS SUBSTITUTION) this keyword will be replaced with globalObject
+// only in non strict mode
+
+// POINT 4
+// THIS keyword value depends on how the function is called
+// if the function is called without any reference its value will be undefined
+// if a reference is provided e.g: window.x() then it will point to that reference
+
+// POINT 5
+// THIS keyword inside a object's method
+
+// const obj = {
+//     a: 10,
+//     x: function () {
+//         console.log(this.a)
+//     }
+// }
+
+// obj.x()
+
+// POINT 6
+// arrow function dont provide their own THIS Binding
+// it retians the THIS value of the enclosing lexical context
+
+// const info = {
+//     name: 'omair',
+//     printName: () => {
+//         console.log(this)
+//     }
+// }
+
+// info.printName()
+
+// const info = {
+//     name: 'omair',
+//     printName: () => {
+//         const inner = () => {
+//             console.log(this)
+//         }
+//         inner()
+//     }
+// }
+
+// info.printName()
+
+
+// const info = {
+//     name: 'omair',
+//     printName: () => {
+//         const inner = function () {
+//             console.log(this)
+//         }
+//         inner()
+//     }
+// }
+
+// info.printName()
+
+// const info = {
+//     name: 'omair',
+//     printName: function () {
+//         const inner = () => {
+//             console.log(this)
+//         }
+//         inner()
+//     }
+// }
+
+// info.printName()
+
+// 1-Arrow functions do not have their own this context; they inherit it from their defining scope.
+// 2-Regular functions have their own this context, which is determined by the call site.
+// 3-Calling a regular function without an explicit context(e.g., as an object method) will default this to the global object in non - strict mode or undefined in strict mode.
+
+
+// POINT 7
+// THIS INSIDE DOM ELEMENTS refer to HTML element
+
+// POINT 8
+// call , apply , bind methods are used for SHARING METHODS
+// methodOrFunctionName.call(objectYouWantTHISKeywordToPoint)
+
+
+// function printFullName(city, country) {
+//     console.log(`${city} ${country}`)
+// }
+
+// let info = {
+//     firstName: 'muhammad',
+//     lastName: 'omair',
+
+// }
+
+// let teacherInfo = {
+//     firstName: 'saeed',
+//     lastName: 'ajmal',
+// }
+// CALL
+// printFullName.call(teacherInfo, 'karachi', 'pechs')
+
+
+// printFullName.apply(teacherInfo, ['karachi', 'pechs'])
+
+// const testingBind = printFullName.apply(teacherInfo, ['karachi', 'pechs'])
+
+
+// console.log(testingBind)
+
+
+// Implicit Binding:
+
+// const person = {
+//     name: 'John',
+//     greet: function () {
+//         console.log(`Hello, ${this.name}!`);
+//     },
+// };
+
+// person.greet(); // Output: Hello, John!
+
+
+// Explicit Binding:
+
+// JavaScript provides methods to explicitly bind the ‘this’ keyword to a specific object using functions such as call(), apply(), and bind().
+
+
+
+//1. The call() method:
+
+// The call() method allows you to invoke a function and explicitly set the ‘this’ keyword to a specified object. Consider the following example:
+// function greet() {
+//     console.log(`Hello, ${this.name}!`);
+// }
+
+// const person = {
+//     name: 'John',
+// };
+
+// greet.call(person); // Output: Hello, John!
+// In this example, the greet() function is invoked using the call() method, with the person object passed as the argument.As a result, ‘this’ inside the function refers to the person object.
+
+// 2. The apply() method:
+
+// The apply() method works similarly to the call() method, but it accepts an array of arguments instead.
+
+// function greet() {
+//     console.log(`Hello, ${this.name}!`);
+// }
+
+// const person = {
+//     name: ['John'],
+// };
+
+// greet.call(person); // Output: Hello, John!
+
+
+// 3. The bind() method:
+// The bind() method returns a new function with the ‘this’ keyword permanently bound to a specified object.The original function remains unchanged.
+
+// function greet() {
+//     console.log(`Hello, ${this.name}!`);
+// }
+
+// const person = {
+//     name: 'John',
+// };
+
+// const greetPerson = greet.bind(person);
+// greetPerson(); // Output: Hello, John!
