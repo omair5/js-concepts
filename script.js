@@ -723,6 +723,7 @@
 
 // Encapsulation: Focuses on restricting access to an object's internal state and
 // providing a controlled way to access and modify it. (like getter and setters)
+// https://www.youtube.com/watch?v=s6vSZYVELNA
 
 // Abstraction: Focuses on hiding the complexity of an implementation and exposing
 // only the essential features.
@@ -905,3 +906,41 @@
 // console.log(person.lastName);
 // console.log(person.fullName);
 // console.log(person.age);
+
+
+
+
+// ---------------------- EVENT PROPAGATION & EVENT DELEGATION
+
+
+// Event Propagation
+// --------------------
+// Event propagation describes the way events travel through the DOM tree.There are three phases of event propagation:
+
+// Capturing Phase(Trickling Phase):
+// The event starts from the window and propagates down to the target element.
+
+// Target Phase:
+// The event reaches the target element where the event was originally triggered.
+
+// Bubbling Phase:
+// After reaching the target element, the event propagates back up to the window.
+
+
+// Event Delegation
+// --------------------
+// Event delegation is a technique that leverages event propagation(specifically, event bubbling) to manage events efficiently.Instead of attaching individual event listeners to each child element, a single event listener is attached to a common ancestor(usually a parent element).When an event occurs on a child element, it bubbles up to the ancestor where the event listener can handle it.
+
+
+// by default it is event bubbling(false) (TARGET ELEMENT SE DURR JAO) if we dont specify explicitly
+// otherwise it will event capturing(true) (PARENT ELEMENT SE TARGET ELEMENT TAK AO)
+
+// if we have mix up handlers then:
+// first event capturing cycle occured and then event bubbling will occur
+// https://www.youtube.com/watch?v=aVSf0b1jVKk (see from minute 21:00)
+
+//  A Boolean value that specifies whether the event should be captured during the capturing phase(true) or the bubbling phase(false).
+
+// The capturing listeners are executed in order from the outermost to the innermost.
+
+
