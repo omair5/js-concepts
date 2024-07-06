@@ -82,7 +82,7 @@
 
 
 // normal function have there own THIS while
-// arrow function doen'nt have there own this binding they get THIS from eclosing
+// arrow function doen'nt have there own this binding they get THIS from enclosing
 // lexical scope when they are defined.
 
 
@@ -408,6 +408,13 @@
 
 
 
+
+
+
+
+
+
+
 // ---------------------- CLASS IN JAVASCRIPT
 
 // class = (ES6 feature) provides a more structured and cleaner way to
@@ -481,7 +488,7 @@
 // promoting reuse and reducing redundancy.
 
 
-// STATIC KEYWORD
+// // STATIC KEYWORD
 // ---------------
 
 // static = keyword that defines properties or methods that belong
@@ -574,7 +581,7 @@
 
 
 
-// INHERITANCE
+// // INHERITANCE
 
 // class Animal {
 
@@ -626,16 +633,78 @@
 
 
 
-// Encapsulation: Focuses on restricting access to an object's internal state and
+//// Encapsulation
+// -----------------
+// Focuses on restricting access to an object's internal state and
 // providing a controlled way to access and modify it. (like getter and setters)
-// https://www.youtube.com/watch?v=s6vSZYVELNA
 
-// Abstraction: Focuses on hiding the complexity of an implementation and exposing
+// It restricts direct access to some of the object's components, which can prevent the accidental modification of data.
+
+// Purpose: The main goal of encapsulation is to protect the internal state of an object and only expose a controlled interface to the outside world.
+// This helps in maintaining the integrity of the data and ensures that the object’s methods are used correctly.
+
+
+//// Abstraction
+// ---------------
+// Focuses on hiding the complexity of an implementation and exposing
 // only the essential features.
+// Focus on What, Not How: It allows the user to understand what the object does without needing to know how it does it.
+
+
+//// POLYMORPHISM
+// --------------
+// polymorphism allows you to use a single method or class to perform different tasks.
+// The "Power" button is like a method that can do different things depending on the object(TV, music system, air conditioner).
+
+
+// Method Overloading: Multiple methods with the same name but different parameters.
+
+// class MathOperation {
+//     add(a, b) {
+//         return a + b;
+//     }
+
+//     add(a, b, c) {
+//         return a + b + c;
+//     }
+// }
+
+// const operation = new MathOperation();
+// console.log(operation.add(2, 3)); // Output: 5
+// console.log(operation.add(2, 3, 4)); // Output: 9
+
+
+// Method Overriding: A subclass provides a specific implementation of a method that is already defined in its superclass.
+
+// class Animal {
+//     sound() {
+//         console.log("Animal makes a sound");
+//     }
+// }
+
+// class Dog extends Animal {
+//     sound() {
+//         console.log("Dog barks");
+//     }
+// }
+
+// class Cat extends Animal {
+//     sound() {
+//         console.log("Cat meows");
+//     }
+// }
+
+// const myDog = new Dog();
+// const myCat = new Cat();
+
+// myDog.sound(); // Output: Dog barks
+// myCat.sound(); // Output: Cat meows
 
 
 
-// SUPER
+
+
+//// SUPER
 
 // super = keyword is used in classes to call the constructor or
 // access the properties and methods of a parent (superclass)
@@ -703,9 +772,9 @@
 
 
 
-// GETTER SETTERS
+//// GETTER SETTERS
 
-// ---------- EXAMPLE 1 ----------
+// // ---------- EXAMPLE 1 ----------
 // class Rectangle {
 
 //     constructor(width, height) {
@@ -811,6 +880,12 @@
 // console.log(person.lastName);
 // console.log(person.fullName);
 // console.log(person.age);
+
+
+
+
+
+
 
 
 
