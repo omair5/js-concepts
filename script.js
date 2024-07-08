@@ -890,6 +890,245 @@
 
 
 
+// ---------------------- PROTOTYPE
+
+// https://www.programiz.com/javascript/prototype
+// https://www.youtube.com/watch?v=uMI5cNeHTOc
+
+// PROTOTYPE is an object that is associated with every function and object in js.
+
+// additional properties can be attached to it which will
+// be shared across all instances of its constructor function.
+
+
+// js works on prototypal inheritance
+// js haar nahi maanti hai upper se upper search karti rehti hai
+
+// function (prototype) ===> object(prototype) ===> null
+// Array (prototype) ===> object(prototype) ===> null
+// String (prototype) ===> object(prototype) ===> null
+
+
+// //TYPE OF EXAMPLES
+
+// function returnNumber() {
+//     return 42;
+// }
+
+// console.log(typeof returnNumber); // Output: "function"
+// console.log(typeof returnNumber()); // Output: "number"
+
+// function returnString() {
+//     return "Hello, World!";
+// }
+
+// console.log(typeof returnString); // Output: "function"
+// console.log(typeof returnString()); // Output: "string"
+
+
+// function returnBoolean() {
+//     return true;
+// }
+
+// console.log(typeof returnBoolean); // Output: "function"
+// console.log(typeof returnBoolean()); // Output: "boolean"
+
+
+// // in javascript functions are special type of object u can even attach properties and methods to it
+// function checktype() {
+//     return 'hello'
+// }
+// console.log(checktype instanceof Object)
+
+
+// class test {
+//     alive = true
+// }
+
+// console.log(typeof test) //function
+
+
+
+////------------------------------ __proto__ VS prototype
+
+// const arr = []
+
+// console.log(arr)
+// arr(__proto__) => Array(prototype) => Object(prototype) =>null
+
+
+// // Internal[[Prototype]](also accessed via __proto__):
+
+// Every object in JavaScript has an internal[[Prototype]] property.This is a reference to another object from which it inherits properties and methods.
+// This internal property can be accessed using Object.getPrototypeOf(obj) or the __proto__ property(though __proto__ is not recommended for direct use).
+
+
+//// prototype Property:
+
+// The prototype property is present on constructor functions(including function objects).This property is used when creating new instances of an object with the new keyword.
+// Regular objects, including instances of arrays, do not have a prototype property.
+
+
+
+
+// //---------------------------   PROTOTYPAL CHAINING
+// have u ever wondered that how just after creating an array you are getting access to push,pop,slice etc etc
+// this all happens just becasue of prototypal chaining.
+
+// JavaScript always searches for properties in the constructor function first.Then, it searches in the prototype.
+
+// function Car() {
+//     this.color = "Red";
+// };
+
+// // add property that already exists
+// Car.prototype.color = "Blue";
+
+// // add a new property
+// Car.prototype.wheels = 4;
+
+// const c1 = new Car();
+
+// console.log(`The car's color is ${c1.color}.`);
+// console.log(`The car has ${c1.wheels} wheels.`);
+
+
+// //----------------------------  PROTOTYPAL INHERITANCE
+
+// function Car(model, year) {
+//     this.model = model;
+//     this.year = year;
+// };
+
+// // create multiple objects
+// let c1 = new Car("Mustang", 1964);
+// let c2 = new Car("Corolla", 1966);
+
+// // add property
+// Car.prototype.color = "Red";
+
+// // add method
+// Car.prototype.drive = function () {
+//     console.log(`Driving ${this.model}`);
+// };
+
+// console.log('jeelsd', Car)
+
+// // display added property using c1 and c2 objects
+// console.log(`${c1.model} color: ${c1.color}`);
+// console.log(`${c2.model} color: ${c2.color}`);
+
+// // display added method using c1 and c2 objects
+// c1.drive();
+// c2.drive();
+
+
+
+
+// // SOME EXAMPLES
+
+// constructor functions and functions have prototype
+// function test() {
+//     return {
+//         name: 'omair'
+//     }
+// }
+
+// console.log(test.prototype)
+
+
+// // instances without new keyword have a __proto__ property not prototype
+
+// const test = ['2100', '2']
+// console.log('test', test.prototype)
+// console.log('test', test.__proto__.prototype)
+
+
+// const myArr = new Array()
+// console.log(myArr.__proto__)
+
+
+
+// const check = new Array()
+// console.log(check.prototype) it will print undefined
+
+
+// console.log(Array.prototype) it will print the object
+
+
+
+
+// function Test() {
+//     this.name = 'default';
+// }
+
+// // Adding properties and methods to the prototype
+// Test.prototype.greet = function () {
+//     console.log('Hello, ' + this.name);
+// };
+
+// Test.prototype.age = 25;
+
+// console.log(Test.prototype); // Output: { greet: [Function], age: 25 }
+
+// // Creating instances of Test
+// const instance1 = new Test();
+// const instance2 = new Test();
+
+// // Modifying the name property of instance1
+// instance1.name = 'Alice';
+
+// // Accessing the greet method and age property from the prototype
+// instance1.greet(); // Output: Hello, Alice
+// instance2.greet(); // Output: Hello, default
+
+// console.log(instance1.age); // Output: 25
+// console.log(instance2.age); // Output: 25
+
+
+// console.log(instance1.__proto__)
+
+
+// function TEST(name, age) {
+//     this.name = name
+//     this.age = age
+// }
+
+
+// console.log(TEST.prototype)
+
+
+// const arr = []
+
+// arr.__proto__.hi = 'hello'
+
+// console.log(arr)
+
+
+// here is what happen behind the scenes when the new keyword is used:
+
+// a new object is created
+// newly created object gets linked to the prototype property of the constructor function
+// this means that it has access to properties and methods defined on the constructor's prototype
+// the constructor function is called with the specified arguments and this is bound to the newly created object
+
+
+// console.log(Array())
+// console.log(Object())
+// console.log(String())
+
+// Object.prototype.myname = 'omair'
+
+// console.log([])
+// console.log('hello'.myname)
+// console.log(Array().myname)
+
+
+
+
+
+
+
 
 
 
