@@ -2,7 +2,10 @@
 // 2-apply,call,bind
 // 3-object creation: object literal , constructor function , class
 // 4-prototype
-
+// 5-event propagation and event delegation
+// 6-scoping (example of var and let with setTimeout)
+// 7-closures
+// 8-memory management
 
 
 
@@ -1041,7 +1044,7 @@
 
 // const test = ['2100', '2']
 // console.log('test', test.prototype)
-// console.log('test', test.__proto__.prototype)
+// console.log('test', test.__proto__)
 
 
 // const myArr = new Array()
@@ -1124,6 +1127,222 @@
 // console.log(Array().myname)
 
 
+
+
+
+
+
+
+
+
+// ---------------------- EVENT PROPAGATION & EVENT DELEGATION
+
+
+// Event Propagation
+// --------------------
+// Event propagation describes the way events travel through the DOM tree.There are three phases of event propagation:
+
+// Capturing Phase(Trickling Phase):
+// The event starts from the window and propagates down to the target element.
+
+// Target Phase:
+// The event reaches the target element where the event was originally triggered.
+
+// Bubbling Phase:
+// After reaching the target element, the event propagates back up to the window.
+
+
+// Event Delegation
+// --------------------
+// Event delegation is a technique that leverages event propagation(specifically, event bubbling) to manage events efficiently.Instead of attaching individual event listeners to each child element, a single event listener is attached to a common ancestor(usually a parent element).When an event occurs on a child element, it bubbles up to the ancestor where the event listener can handle it.
+
+
+// by default it is event bubbling(false) (TARGET ELEMENT SE DURR JAO) if we dont specify explicitly
+// otherwise it will event capturing(true) (PARENT ELEMENT SE TARGET ELEMENT TAK AO)
+
+// if we have mix up handlers then:
+// first event capturing cycle occured and then event bubbling will occur
+// https://www.youtube.com/watch?v=aVSf0b1jVKk (see from minute 21:00)
+
+//  A Boolean value that specifies whether the event should be captured during the capturing phase(true) or the bubbling phase(false).
+
+// The capturing listeners are executed in order from the outermost to the innermost.
+
+
+
+
+
+
+
+
+
+
+//-------------------- SCOPING
+
+// for (var x = 0; x <= 10; x++) {
+//     console.log(x)
+// }
+// 10
+
+// for (var x = 0; x <= 10; x++) {
+// }
+//     console.log(x)
+// 11
+
+// for (let x = 0; x <= 10; x++) {
+//     console.log(x)
+// }
+// 10
+
+
+
+
+
+
+
+
+
+
+//-------------------- CLOSURES
+
+// function along with its lexical environment- or scope is call closure
+
+// normal function variables are garbage collected
+// where as closures are stored in heap memory
+
+
+// A MYTH
+// -------
+
+// let count = 0
+
+// const myfunc = () => {
+//     count += 1
+//     return count
+// }
+
+// console.log(myfunc())
+// console.log(myfunc())
+// console.log(myfunc())
+
+// above code does not formed a closure
+// it is basically a function accessing the global variable
+
+
+
+// EXAMPLE OF CLOSURES
+// ----------------------
+
+// function func1() {
+//     const age = 29
+
+//     const func2 = () => {
+//         console.log(age)
+//     }
+//     return func2
+// }
+
+// const result = func1()
+
+// result()
+
+
+
+
+// WHY CLOSURES?
+// -------------
+
+// 1. Data Privacy and Encapsulation
+// Closures allow you to create private variables and functions that are not accessible from the outside.This is essential for data privacy and encapsulation.
+
+//     Example:
+
+// javascript
+// Copy code
+// function createCounter() {
+//     let count = 0;
+
+//     return {
+//         increment: function () {
+//             count++;
+//             return count;
+//         },
+//         decrement: function () {
+//             count--;
+//             return count;
+//         }
+//     };
+// }
+
+// const counter = createCounter();
+// console.log(counter.increment()); // 1
+// console.log(counter.decrement()); // 0
+// In this example, the count variable is private and can only be modified using the increment and decrement methods.
+
+// 2. Maintaining State
+// Closures allow functions to maintain state between calls.This is useful for functions that need to remember information between invocations.
+
+//     Example:
+
+// javascript
+// Copy code
+// function makeAdder(x) {
+//     return function (y) {
+//         return x + y;
+//     };
+// }
+
+// const add5 = makeAdder(5);
+// console.log(add5(2)); // 7
+// console.log(add5(10)); // 15
+
+
+
+// INTERVIEW QUESTION OF CLOSURE
+// ------------------------------
+// both of the below loops are forming closures with i
+
+
+// for (var i = 0; i <= 3; i++) {
+//     setTimeout(() => console.log(i), 2000)
+// }
+// why it is printing 4 (4) times??
+
+
+// for (let i = 0; i <= 3; i++) {
+//     setTimeout(() => console.log(i), 2000)
+// }
+// why it is printing 0,1,2,3
+
+
+
+// Scope of var:
+// ----------------
+
+// In JavaScript, the setTimeout function is asynchronous, meaning it schedules the provided callback function to be
+// executed after a specified delay(in this case, 2000 milliseconds or 2 seconds).By the time the callbacks are executed,
+// the for loop has already completed and the variable i has reached its final value, which is 4. Since var declarations are function-scoped,
+// all iterations of the loop share the same i variable.
+
+//     Here's a step-by-step explanation:
+
+// The for loop starts with i = 0 and continues until i is greater than 3.
+// In each iteration of the loop, setTimeout schedules a callback to be executed after 2 seconds.
+// By the time 2 seconds have passed, the loop has already finished and i has the value 4.
+// All the callbacks will access the same i variable, which is now 4, and thus print 4.
+
+
+// Scope of let:
+// ---------------
+
+// let is block-scoped.This means that each iteration of the loop has its own separate instance of the variable i.
+// Loop Execution:
+
+// The loop runs, and in each iteration, a new i is created with the current loop value(0, 1, 2, and 3).
+// setTimeout schedules a callback to run after 2 seconds.Each callback captures the value of i at that particular iteration.
+// Callback Execution:
+
+// When the callbacks run(after 2 seconds), each one prints the value of i that it captured during its respective iteration.
 
 
 
@@ -1394,37 +1613,6 @@
 
 
 
-// ---------------------- EVENT PROPAGATION & EVENT DELEGATION
 
-
-// Event Propagation
-// --------------------
-// Event propagation describes the way events travel through the DOM tree.There are three phases of event propagation:
-
-// Capturing Phase(Trickling Phase):
-// The event starts from the window and propagates down to the target element.
-
-// Target Phase:
-// The event reaches the target element where the event was originally triggered.
-
-// Bubbling Phase:
-// After reaching the target element, the event propagates back up to the window.
-
-
-// Event Delegation
-// --------------------
-// Event delegation is a technique that leverages event propagation(specifically, event bubbling) to manage events efficiently.Instead of attaching individual event listeners to each child element, a single event listener is attached to a common ancestor(usually a parent element).When an event occurs on a child element, it bubbles up to the ancestor where the event listener can handle it.
-
-
-// by default it is event bubbling(false) (TARGET ELEMENT SE DURR JAO) if we dont specify explicitly
-// otherwise it will event capturing(true) (PARENT ELEMENT SE TARGET ELEMENT TAK AO)
-
-// if we have mix up handlers then:
-// first event capturing cycle occured and then event bubbling will occur
-// https://www.youtube.com/watch?v=aVSf0b1jVKk (see from minute 21:00)
-
-//  A Boolean value that specifies whether the event should be captured during the capturing phase(true) or the bubbling phase(false).
-
-// The capturing listeners are executed in order from the outermost to the innermost.
 
 
