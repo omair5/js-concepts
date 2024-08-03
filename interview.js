@@ -37,6 +37,12 @@
 // == vs ===
 // deep vs shallow copy
 // async vs defer
+// shadow dom
+// map vs set
+// shift vs unshift
+// type coercion
+// undefined vs not defined
+
 
 
 //-------- REACT
@@ -46,7 +52,7 @@
 // useRef / createRef / forwardRef
 // useImperative
 // useTransition
-// usEId
+// usId
 // strictmode
 // HOC
 // rerendering in react
@@ -58,11 +64,15 @@
 // diffing
 // reconcilation
 // how to make perfomance better of a react app
+// useEffect vs useLayoutEffect
+// REACT PATTERNS
+// How to minimize re rendering in react
+
 
 
 //-------- LOGICAL JS QUESTIONS
 // 1- give an array [[[[]]]]] check whether all have opening and closing bracket partners
-// flaten arrays using for loog
+// flaten arrays using for loop
 // find common characters in input
 // 111223(312231)
 // second largest number
@@ -85,11 +95,4 @@
 // semantics tags
 // div vs span
 // display:none vs visibility:hidden
-
-
-
-//-------- THING TO SEARCH
-
-// does useCallback have the whole function defintion ??
-// threading in javascript
-// concurrent vs parallel
+// cascading

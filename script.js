@@ -6,6 +6,9 @@
 // 6-scoping (example of var and let with setTimeout)
 // 7-closures
 // 8-memory management
+// 9-promises
+// 10-Async Await
+// 11-observables
 
 
 
@@ -1499,6 +1502,34 @@
 // let closureFunction = outerFunction();
 // When no longer needed
 // closureFunction = null; // Helps garbage collector to reclaim memory
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
