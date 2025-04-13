@@ -30,7 +30,7 @@
 // callback
 // A callback is a JavaScript function that is passed to another function as an argument or a parameter.This function is to be executed whenever the function that it is passed to gets executed.
 
-// sessionStorage vs localStorage vs indexedDB
+// sessionStorage vs localStorage vs indexedDB vs cookie
 // spread vs concat
 //  difference between let and var
 // arrow functions vs normal functions

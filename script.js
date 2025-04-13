@@ -1512,6 +1512,20 @@
 
 
 
+//-------------------- RECUSRSION
+
+// it is used for repeated tasks OR we can say recusrion is the function which call itself.
+
+// RECURSION INVOLVES
+//1- The Function Declaration.
+//2- The Base Case.
+//3- The Recursive Call command.
+
+// THINKING RECURSIVELY
+// https://www.youtube.com/watch?v=ngCos392W4w
+// 1- create a base case output in your mind.
+// 2- try to break recursive calls in to block like for example if i need to add 5 separate blocks in to 4 separate blocks
+//    then first i have to get to result of 4 blocks first 
 
 
 
